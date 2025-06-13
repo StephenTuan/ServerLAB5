@@ -23,14 +23,14 @@ router.post('/add', async(req, res)=>{
   try {
     const model = new modelDistributor(req.body);
     const data = await model.save();
-    res.status(201).json({ status: 201, message: "Thêm nhà phân phối thành công", data: data });
+    res.status(201).json({ status: 200, message: "Thêm nhà phân phối thành công", data: data });
   } catch (error) {
     console.log(error);
     res.status(500).json({ status: 500, message: "Lỗi thêm nhà phân phối", error: error.message });
   }
 })
 
-router.put('/updat/:id', async (req, res) => {
+router.put('/update/:id', async (req, res) => {
   try {
     const data = await modelDistributor.findByIdAndUpdate(req.params.id, req.body, { new: true });
     if (!data) {
